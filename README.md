@@ -58,3 +58,4 @@ The dashboard currently uses example data. Its chart is illustrative and does no
 ## Project status
 Portfolio prototype in development.
 
+Project demo deployment in progress.
