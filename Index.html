@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareBridge NG Analytics</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f6fa;color:#172b4d}
+header{background:#123c69;color:white;padding:24px 18px}
+header h1{margin:0 0 8px;font-size:25px}
+header p{margin:0;color:#dce9f8;line-height:1.5}
+main{max-width:1000px;margin:auto;padding:18px}
+.notice{background:#fff4d6;padding:12px;border-radius:8px;font-size:13px}
+label{display:block;font-weight:bold;margin:20px 0 8px}
+select{width:100%;padding:12px;border:1px solid #ccd5e0;border-radius:8px;background:white;font-size:16px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin:18px 0}
+.card,.panel{background:white;padding:18px;border-radius:12px;box-shadow:0 2px 8px #14213d10}
+.card p{margin:0 0 10px;color:#52647a;font-size:13px}
+.metric{font-size:27px;font-weight:bold;color:#087f8c}
+.panel{margin:14px 0}
+.bar-row{display:grid;grid-template-columns:75px 1fr 30px;gap:8px;align-items:center;margin:17px 0;font-size:13px}
+.track{height:20px;background:#e5edf5;border-radius:5px;overflow:hidden}
+.bar{height:100%;background:#159a9c;border-radius:5px}
+footer{padding:20px;text-align:center;color:#65758b;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+<h1>CareBridge NG Analytics</h1>
+<p>Healthcare Operations &amp; Patient Flow Analytics · Lagos, Nigeria</p>
+</header>
+<main>
+<p class="notice"><strong>Demo notice:</strong> All figures on this dashboard are synthetic and are not real hospital records.</p>
+<label for="clinic">Select clinic</label>
+<select id="clinic">
+<option value="all">All clinics</option>
+<option value="ikeja">Ikeja Clinic</option>
+<option value="yaba">Yaba Clinic</option>
+<option value="lekki">Lekki Clinic</option>
+</select>
+<section class="cards">
+<div class="card"><p>Total patient visits</p><div class="metric" id="visits">240</div></div>
+<div class="card"><p>Average waiting time</p><div class="metric" id="wait">38 min</div></div>
+<div class="card"><p>Clinics represented</p><div class="metric" id="clinics">3</div></div>
+</section>
+<section class="panel">
+<h2>Visits by time period</h2>
+<p>Illustrative distribution across the day</p>
+<div class="bar-row"><span>8–10 AM</span><div class="track"><div class="bar" style="width:66.7%"></div></div><span>60</span></div>
+<div class="bar-row"><span>10–12 PM</span><div class="track"><div class="bar" style="width:100%"></div></div><span>90</span></div>
+<div class="bar-row"><span>12–2 PM</span><div class="track"><div class="bar" style="width:61.1%"></div></div><span>55</span></div>
+<div class="bar-row"><span>2–4 PM</span><div class="track"><div class="bar" style="width:38.9%"></div></div><span>35</span></div>
+</section>
+<section class="panel">
+<h2>Operational insight</h2>
+<p id="insight">The 10 AM–12 PM period has the highest illustrative visit volume. Review staffing and patient registration capacity during this period.</p>
+</section>
+<section class="panel">
+<h2>Project objectives</h2>
+<ul>
+<li>Monitor patient visit volumes.</li>
+<li>Understand waiting-time patterns.</li>
+<li>Identify periods that may need additional operational support.</li>
+<li>Explore responsible AI-assisted interpretation of healthcare metrics.</li>
+</ul>
+</section>
+</main>
+<footer>CareBridge NG Analytics · Open-source portfolio prototype</footer>
+<script>
+const data={
+all:{visits:240,wait:38,clinics:3,insight:"The 10 AM–12 PM period has the highest illustrative visit volume. Review staffing and patient registration capacity during this period."},
+ikeja:{visits:100,wait:42,clinics:1,insight:"Ikeja has an illustrative average wait of 42 minutes. Review registration and staffing workflows before drawing conclusions about causes."},
+yaba:{visits:80,wait:35,clinics:1,insight:"Yaba has an illustrative average wait of 35 minutes. Compare its workflow with other clinics to identify practices worth investigating."},
+lekki:{visits:60,wait:36,clinics:1,insight:"Lekki has an illustrative average wait of 36 minutes. Review visit patterns and patient flow before recommending changes."}
+};
+document.getElementById("clinic").addEventListener("change",function(){
+const d=data[this.value];
+document.getElementById("visits").textContent=d.visits;
+document.getElementById("wait").textContent=d.wait+" min";
+document.getElementById("clinics").textContent=d.clinics;
+document.getElementById("insight").textContent=d.insight;
+});
+</script>
+</body>
+</html>
